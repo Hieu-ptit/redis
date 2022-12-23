@@ -1,0 +1,67 @@
+logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+server:
+  port: 8023
+  error:
+    include-binding-errors: always
+    include-message: always
+management:
+  security:
+    enabled: false
+management.endpoint.health.probes.enabled: true
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: true
+    show-sql: true
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/worker?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Ho_Chi_Minh&&stringtype=unspecified&sslmode=disable"
+    username: postgres
+    password: 123456
+  kafka:
+    properties:
+      bootstrap.servers: 159.223.81.203:9093
+      security.protocol: PLAINTEXT
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+    consumer:
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+  mvc:
+    async:
+      request-timeout: 120000
+#  flyway:
+#    baseline-on-migrate: true
+#    url: "jdbc:postgresql://localhost:5432/worker"
+#    user: postgres
+#    password: 123456
+#    locations: classpath:db/migration
+redis:
+  port: 6379
+  connect-timeout: 60000
+  database: 2
+  password: 123456
+  host: 192.168.0.104
+hazelcast:
+  cluster-name: worker
+app:
+  session:
+    changer:
+      password:
+        first:
+          times: 3000
+
+casbin:
+  enableCasbin: true
+  useSyncedEnforcer: false
+  autoSave: false
+  storeType: jdbc
+  tableName: permission
+  initializeSchema: create
+  model: config/permission_model.conf

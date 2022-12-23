@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.viettel</groupId>
+	<artifactId>worker</artifactId>
+	<packaging>pom</packaging>
+	<version>1.2.0</version>
+	<modules>
+		<module>commons</module>
+		<module>core</module>
+		<module>core-api</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.5</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<springfox.version>3.0.0</springfox.version>
+		<dsl-json-ext.version>1.0.2</dsl-json-ext.version>
+		<testcontainers.version>1.16.0</testcontainers.version>
+		<java-jwt.version>3.18.2</java-jwt.version>
+		<guava.version>31.0.1-jre</guava.version>
+		<hibernate-types.version>2.12.0</hibernate-types.version>
+		<hazelcast-kubernetes.version>2.2.3</hazelcast-kubernetes.version>
+		<janino.version>3.1.7</janino.version>
+		<jackson.version>2.13.1</jackson.version>
+		<httpclient.version>4.5.13</httpclient.version>
+		<bouncycastle.version>1.70</bouncycastle.version>
+		<dsl-json.version>1.9.8</dsl-json.version>
+		<java-jwt.version>3.18.2</java-jwt.version>
+		<hazelcast-kubernetes.version>2.2.3</hazelcast-kubernetes.version>
+		<java-jwt.version>3.18.2</java-jwt.version>
+		<casbin.version>0.4.1</casbin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.viettel</groupId>
+				<artifactId>commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.dslplatform</groupId>
+				<artifactId>dsl-json-java8</artifactId>
+				<version>${dsl-json.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>${java-jwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.casbin</groupId>
+				<artifactId>casbin-spring-boot-starter</artifactId>
+				<version>${casbin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct-processor</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-boot-starter</artifactId>
+				<version>${springfox.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hazelcast</groupId>
+				<artifactId>hazelcast-kubernetes</artifactId>
+				<version>${hazelcast-kubernetes.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.resilience4j</groupId>
+				<artifactId>resilience4j-spring-boot2</artifactId>
+				<version>${resilience4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${testcontainers.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vladmihalcea</groupId>
+				<artifactId>hibernate-types-52</artifactId>
+				<version>${hibernate-types.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.janino</groupId>
+				<artifactId>janino</artifactId>
+				<version>${janino.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr310</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcpkix-jdk15on</artifactId>
+				<version>${bouncycastle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<!--            <plugin>-->
+			<!--                <groupId>com.github.spotbugs</groupId>-->
+			<!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+			<!--                <version>4.4.1</version>-->
+			<!--                <dependencies>-->
+			<!--                    <dependency>-->
+			<!--                        <groupId>com.github.spotbugs</groupId>-->
+			<!--                        <artifactId>spotbugs</artifactId>-->
+			<!--                        <version>4.4.1</version>-->
+			<!--                    </dependency>-->
+			<!--                </dependencies>-->
+			<!--                <configuration>-->
+			<!--                    <excludeFilterFile>${basedir}/../spotbugs-exclude.xml</excludeFilterFile>-->
+			<!--                </configuration>-->
+			<!--                <executions>-->
+			<!--                    <execution>-->
+			<!--                        <id>check</id>-->
+			<!--                        <phase>compile</phase>-->
+			<!--                        <goals>-->
+			<!--                            <goal>check</goal>-->
+			<!--                        </goals>-->
+			<!--                    </execution>-->
+			<!--                </executions>-->
+			<!--            </plugin>-->
+		</plugins>
+	</build>
+</project>
